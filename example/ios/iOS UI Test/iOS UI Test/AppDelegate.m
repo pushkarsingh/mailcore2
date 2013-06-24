@@ -8,10 +8,13 @@
 
 #import "AppDelegate.h"
 
+NSString * const FetchFullMessageKey = @"FetchFullMessageEnabled";
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:FetchFullMessageKey];
     // Override point for customization after application launch.
     return YES;
 }

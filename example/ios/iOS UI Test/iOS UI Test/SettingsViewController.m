@@ -12,7 +12,7 @@
 NSString * const UsernameKey = @"username";
 NSString * const PasswordKey = @"password";
 NSString * const HostnameKey = @"hostname";
-NSString * const FetchFullMessageKey = @"FetchFullMessageEnabled";
+extern NSString * const FetchFullMessageKey;
 
 @implementation SettingsViewController
 
