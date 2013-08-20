@@ -331,7 +331,7 @@ void IMAPSession::init()
     mIdleEnabled = false;
     mXListEnabled = false;
     mQResyncEnabled = false;
-    mCondstoreEnabled = true;
+    mCondstoreEnabled = false;
     mIdentityEnabled = false;
     mWelcomeString = NULL;
     mNeedsMboxMailWorkaround = false;
