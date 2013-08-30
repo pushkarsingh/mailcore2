@@ -37,6 +37,8 @@ namespace mailcore {
     class IMAPMessageRenderingOperation;
     class IMAPMessage;
     class IMAPSession;
+    class IMAPIdentity;
+    class OperationQueueCallback;
     
     class IMAPAsyncSession : public Object {
     public:
@@ -87,6 +89,13 @@ namespace mailcore {
         virtual void setConnectionLogger(ConnectionLogger * logger);
         virtual ConnectionLogger * connectionLogger();
         
+        virtual void setOperationQueueCallback(OperationQueueCallback * callback);
+        virtual OperationQueueCallback * operationQueueCallback();
+        virtual bool isOperationQueueRunning();
+        
+        virtual IMAPIdentity * serverIdentity();
+        virtual IMAPIdentity * clientIdentity();
+        
         virtual IMAPFolderInfoOperation * folderInfoOperation(String * folder);
         virtual IMAPFolderStatusOperation * folderStatusOperation(String * folder);
         
@@ -127,7 +136,7 @@ namespace mailcore {
         
         virtual IMAPFetchNamespaceOperation * fetchNamespaceOperation();
         
-        virtual IMAPIdentityOperation * identityOperation(String * vendor, String * name, String * version);
+        virtual IMAPIdentityOperation * identityOperation(IMAPIdentity * identity);
         
         virtual IMAPOperation * checkAccountOperation();
         
@@ -141,7 +150,8 @@ namespace mailcore {
         
     public: // private
         virtual void automaticConfigurationDone(IMAPSession * session);
-    
+        virtual void operationRunningStateChanged();
+        
     private:
         Array * mSessions;
         
@@ -160,6 +170,10 @@ namespace mailcore {
         unsigned int mMaximumConnections;
         ConnectionLogger * mConnectionLogger;
         bool mAutomaticConfigurationDone;
+        IMAPIdentity * mServerIdentity;
+        IMAPIdentity * mClientIdentity;
+        bool mQueueRunning;
+        OperationQueueCallback * mOperationQueueCallback;
         
         virtual IMAPAsyncConnection * sessionForFolder(String * folder, bool urgent = false);
         virtual IMAPAsyncConnection * session();
