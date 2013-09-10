@@ -145,16 +145,6 @@
 - (MCOIMAPFolderInfoOperation *) folderInfoOperation:(NSString *)folder;
 
 /**
- Returns an operation that gets the list of subscribed folders.
-
-     MCOIMAPFetchFoldersOperation * op = [session fetchAllFoldersOperation];
-     [op start:^(NSError * error, NSArray * folders) {
-          ...
-     }];
-*/
-
-
-/**
  Returns an operation that retrieves folder status (like UIDNext - Unseen -)
  
     MCOIMAPFolderStatusOperation * op = [session folderStatusOperation:@"INBOX"];
@@ -170,13 +160,11 @@
 /**
  Returns an operation that gets the list of subscribed folders.
  
-    MCOIMAPFetchFoldersOperation * op = [session fetchAllFoldersOperation];
+    MCOIMAPFetchFoldersOperation * op = [session fetchSubscribedFoldersOperation];
     [op start:^(NSError * error, NSArray * folders) {
         ...
     }];
  */
-
-
 
 - (MCOIMAPFetchFoldersOperation *) fetchSubscribedFoldersOperation;
 
@@ -504,6 +492,17 @@
 - (MCOIMAPIdentityOperation *) identityOperationWithClientIdentity:(MCOIMAPIdentity *)identity;
 
 /**
+ Returns an operation that will connect to the given IMAP server without authenticating.
+ Useful for checking initial server capabilities.
+ 
+ MCOIMAPOperation * op = [session connectOperation];
+ [op start:^(NSError * error) {
+ ...
+ }];
+ */
+- (MCOIMAPOperation *)connectOperation;
+
+/**
  Returns an operation that will check whether the IMAP account is valid.
 
      MCOIMAPOperation * op = [session checkAccountOperation];
@@ -511,6 +510,7 @@
           ...
      }];
 */
+
 - (MCOIMAPOperation *) checkAccountOperation;
 
 /**
