@@ -161,12 +161,30 @@ namespace mailcore {
     };
     
     enum IMAPSearchKind {
+        IMAPSearchKindAll,
         IMAPSearchKindNone,
         IMAPSearchKindFrom,
         IMAPSearchKindRecipient,
         IMAPSearchKindSubject,
         IMAPSearchKindContent,
         IMAPSearchKindHeader,
+        IMAPSearchKindRead,
+        IMAPSearchKindUnread,
+        IMAPSearchKindFlagged,
+        IMAPSearchKindUnflagged,
+        IMAPSearchKindAnswered,
+        IMAPSearchKindUnanswered,
+        IMAPSearchKindDraft,
+        IMAPSearchKindUndraft,
+        IMAPSearchKindDeleted,
+        IMAPSearchKindSpam,
+        IMAPSearchKindBeforeDate,
+        IMAPSearchKindOnDate,
+        IMAPSearchKindSinceDate,
+        IMAPSearchKindBeforeReceivedDate,
+        IMAPSearchKindOnReceivedDate,
+        IMAPSearchKindSinceReceivedDate,
+        IMAPSearchKindGmailThreadID,
         IMAPSearchKindOr,
         IMAPSearchKindAnd,
     };
@@ -227,7 +245,8 @@ namespace mailcore {
         IMAPMessageRenderingTypeHTML,
         IMAPMessageRenderingTypeHTMLBody,
         IMAPMessageRenderingTypePlainText,
-        IMAPMessageRenderingTypePlainTextBody
+        IMAPMessageRenderingTypePlainTextBody,
+        IMAPMessageRenderingTypePlainTextBodyAndStripWhitespace,
     };
 }
 

@@ -156,6 +156,8 @@ typedef enum {
 
 /** It's the search type.*/
 typedef enum {
+    /** Search All */
+    MCOIMAPSearchKindAll,
     /** No search.*/
     MCOIMAPSearchKindNone,
     /** Match sender.*/
@@ -168,6 +170,8 @@ typedef enum {
     MCOIMAPSearchKindContent,
     /** Match headers of the message.*/
     MCOIMAPSearchKindHeader,
+    /** Match X-GM-THRID.*/
+    MCOIMAPSearchGmailThreadID,
     /** Or expresssion.*/
     MCOIMAPSearchKindOr,
     /** And expression.*/
@@ -249,7 +253,9 @@ typedef enum {
     /** AUTH=SRP Capability.*/
     MCOIMAPCapabilityAuthSRP,
     /** AUTH=XOAUTH2 Capability.*/
-    MCOIMAPCapabilityXOAuth2
+    MCOIMAPCapabilityXOAuth2,
+    /** X-GM-EXT-1 Capability.*/
+    MCOIMAPCapabilityGmail
 } MCOIMAPCapability;
 
 /** Error domain for mailcore.*/
