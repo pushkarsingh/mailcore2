@@ -670,6 +670,7 @@ void SMTPSession::sendMessage(Address * from, Array * recipients, Data * message
 
     bodyProgress(messageData->length(), messageData->length());
     * pError = ErrorNone;
+    return;
     
     err:
     mProgressCallback = NULL;
